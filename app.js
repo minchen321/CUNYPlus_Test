@@ -11,18 +11,18 @@ var LocalStrategy = require('passport-local').Strategy;
 var mongo = require('mongodb');
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/loginapp');
+mongoose.connect('mongodb://localhost/cunyplus');
 var db = mongoose.connection;
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
+// var routes = require('./controllers/index');
+// var users = require('./routes/users');
 
 // Init App
 var app = express();
 
 // View Engine
 app.set('views', path.join(__dirname, 'views'));
-app.engine('handlebars', exphbs({defaultLayout:'layout'}));
+app.engine('handlebars', exphbs({defaultLayout:'main'}));
 app.set('view engine', 'handlebars');
 
 // BodyParser Middleware
@@ -75,12 +75,11 @@ app.use(function (req, res, next) {
 });
 
 
+app.use(require('./controllers'));
 
-app.use('/', routes);
-app.use('/users', users);
 
 // Set Port
-app.set('port', (process.env.PORT || 5000));
+app.set('port', (process.env.PORT || 4000));
 
 app.listen(app.get('port'), function(){
 	console.log('Server started on port '+app.get('port'));
