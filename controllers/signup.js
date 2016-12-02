@@ -43,7 +43,7 @@ router.post('/', function(req, res){
 	} else {
 		 		var newUser = new User({
 					username:username,
-				  	school:school,
+				  school:school,
 					gender:gender,
 					email:email,
 					password:password,

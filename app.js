@@ -10,12 +10,9 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var mongo = require('mongodb');
 var mongoose = require('mongoose');
-
+//connection to database
 mongoose.connect('mongodb://localhost/cunyplus');
 var db = mongoose.connection;
-
-// var routes = require('./controllers/index');
-// var users = require('./routes/users');
 
 // Init App
 var app = express();
@@ -79,7 +76,7 @@ app.use(require('./controllers'));
 
 
 // Set Port
-app.set('port', (process.env.PORT || 4000));
+app.set('port', (process.env.PORT || 3000));
 
 app.listen(app.get('port'), function(){
 	console.log('Server started on port '+app.get('port'));
